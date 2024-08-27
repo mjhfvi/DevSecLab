@@ -120,14 +120,6 @@ repos:
         description: Gitleaks is for detecting and preventing hardcoded secrets
         args: [--no-banner, --config=.gitleaks.toml]
         verbose: true
-      - id: gitleaks-docker
-        name: gitleaks-docker
-        description: Detect hardcoded system docker secrets using Gitleaks
-        args: [--no-banner, --config=.gitleaks.toml]
-      # - id: gitleaks-system
-      #   name: Detect hardcoded secrets
-      #   description: Detect hardcoded system secrets using Gitleaks
-      #   args: [--no-banner, --config=.gitleaks.toml]
 
   - repo: https://github.com/thoughtworks/talisman
     rev: v1.32.0

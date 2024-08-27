@@ -1,0 +1,23 @@
+---
+replicaCount: 1
+
+image:
+  repository: mjhfvi/clalit-python-env
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer    # ClusterIP
+  port: 5000
+
+configMap:
+  enabled: true
+  data:
+    HOST_VAR: 'postgresql-db-hl.job-project.svc.cluster.local'
+    PORT_DB_VAR: '5432'
+    PORT_VAR: '5000'
+    DB_VAR: 'employees'
+    USER_VAR: 'postgres'
+    PASSWORD_VAR: 'mydbpassword'
+
+resources: {}

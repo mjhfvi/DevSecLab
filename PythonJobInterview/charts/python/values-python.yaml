@@ -1,0 +1,25 @@
+---
+replicaCount: 1
+
+image:
+  repository: mjhfvi/clalit-python-env
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 5000
+
+configMap:
+  enabled: true
+  data:
+    MY_ENV_VAR: "some value"
+    ANOTHER_ENV_VAR: "another value"
+    HOST_VAR: 'postgresql.job-project.svc.cluster.local'
+    PORT_DB_VAR: '5432'
+    PORT_VAR: '5000'
+    DB_VAR: 'flaskappdb'
+    USER_VAR: 'flaskappuser'
+    PASSWORD_VAR: '12345'
+
+resources: {}

@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "properties": {
+    "containerSecurityContext": {
+      "form": true,
+      "properties": {
+        "enabled": {
+          "description": "Whether to enable NGINX containers' Security Context",
+          "form": true,
+          "title": "Enable Security Context",
+          "type": "boolean"
+        },
+        "runAsUser": {
+          "description": "The UID of the user NGINX containers will run as",
+          "form": true,
+          "title": "ID of the user",
+          "type": "integer"
+        }
+      },
+      "title": "NGINX containers' Security Context",
+      "type": "object"
+    },
+    "ingress": {
+      "form": true,
+      "properties": {
+        "enabled": {
+          "description": "Enable the ingress resource that allows you to access the NGINX installation.",
+          "form": true,
+          "title": "Use a custom hostname",
+          "type": "boolean"
+        },
+        "hostname": {
+          "form": true,
+          "hidden": {
+            "path": "ingress/enabled",
+            "value": false
+          },
+          "title": "Hostname",
+          "type": "string"
+        }
+      },
+      "title": "Ingress details",
+      "type": "object"
+    },
+    "metrics": {
+      "form": true,
+      "properties": {
+        "enabled": {
+          "description": "Create a side-car container to expose Prometheus metrics",
+          "form": true,
+          "title": "Create Prometheus metrics exporter",
+          "type": "boolean"
+        },
+        "serviceMonitor": {
+          "properties": {
+            "enabled": {
+              "description": "Create a ServiceMonitor to track metrics using Prometheus Operator",
+              "form": true,
+              "hidden": {
+                "path": "metrics/enabled",
+                "value": false
+              },
+              "title": "Create Prometheus Operator ServiceMonitor",
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "title": "Prometheus metrics details",
+      "type": "object"
+    },
+    "podSecurityContext": {
+      "form": true,
+      "properties": {
+        "enabled": {
+          "description": "Whether to enable NGINX pods' Security Context",
+          "form": true,
+          "title": "Enable Security Context",
+          "type": "boolean"
+        },
+        "fsGroup": {
+          "description": "The GID of the group NGINX pods will run as",
+          "form": true,
+          "title": "ID of the group",
+          "type": "integer"
+        }
+      },
+      "title": "NGINX pods' Security Context",
+      "type": "object"
+    },
+    "replicaCount": {
+      "description": "Number of replicas to deploy",
+      "form": true,
+      "title": "Number of replicas",
+      "type": "integer"
+    },
+    "serverBlock": {
+      "description": "Custom server block to be added to NGINX configuration",
+      "form": true,
+      "title": "Custom server block",
+      "type": "string"
+    },
+    "service": {
+      "form": true,
+      "properties": {
+        "type": {
+          "description": "Allowed values: \"ClusterIP\", \"NodePort\" and \"LoadBalancer\"",
+          "form": true,
+          "title": "Service Type",
+          "type": "string"
+        }
+      },
+      "title": "Service Configuration",
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,12 @@
+# source: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-persistent-volume-claim-nfs
+spec:
+  storageClassName: postgres-storage-nfs
+  accessModes: [ReadWriteMany]
+  resources:
+    requests:
+      storage: 2Gi

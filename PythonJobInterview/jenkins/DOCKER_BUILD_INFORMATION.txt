@@ -1,0 +1,3 @@
+env.DOCKER_REPOSITORY="mjhfvi/demo-project"
+env.DOCKER_BUILD_FOLDER="jobProject/python/"
+env.DOCKER_BUILD_FILE="dockerfile"

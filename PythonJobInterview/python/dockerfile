@@ -1,0 +1,33 @@
+# Use an official Python runtime as a parent image
+ARG BASE_OS_VERSION=3.9.19-slim
+
+# FROM python:
+FROM python:${BASE_OS_VERSION:-latest}
+
+# FROM python:3.9.19-slim
+
+# Set the environment variable
+ARG PORT_VAR=5000
+ENV PORT_VAR ${PORT_VAR:-5000}
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Install dependencies
+COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Create a non-root user and give access to the /app folder
+RUN groupadd -r webapp && useradd --no-log-init -r -g webapp webapp && chown -R webapp:webapp /app
+
+# Switch to non-root user
+USER webapp
+
+# Add /app Folder to the System Path
+ENV PATH "$PATH:/app"
+
+# Make port 5000 available to the world outside this container
+EXPOSE ${PORT_VAR}
+
+# Run the app. CMD is required to run on Heroku
+CMD gunicorn --bind 0.0.0.0:${PORT_VAR} main:app

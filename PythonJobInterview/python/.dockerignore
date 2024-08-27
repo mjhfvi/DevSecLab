@@ -1,0 +1,8 @@
+./__pycache__
+./kubernetes
+./.git
+*.sql
+*.yml
+*.yaml
+*.md
+dockerfile

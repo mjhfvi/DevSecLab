@@ -1,0 +1,352 @@
+# mysql
+
+![Version: 11.1.1](https://img.shields.io/badge/Version-11.1.1-informational?style=flat-square) ![AppVersion: 8.4.0](https://img.shields.io/badge/AppVersion-8.4.0-informational?style=flat-square)
+
+MySQL is a fast, reliable, scalable, and easy to use open source relational database system. Designed to handle mission-critical, heavy-load production applications.
+
+**Homepage:** <https://bitnami.com>
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| Broadcom, Inc. All Rights Reserved. |  | <https://github.com/bitnami/charts> |
+
+## Source Code
+
+* <https://github.com/bitnami/charts/tree/main/bitnami/mysql>
+
+## Requirements
+
+| Repository | Name | Version |
+|------------|------|---------|
+| oci://registry-1.docker.io/bitnamicharts | common | 2.x.x |
+
+## Values
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| architecture | string | `"standalone"` |  |
+| auth.authenticationPolicy | string | `""` |  |
+| auth.createDatabase | bool | `true` |  |
+| auth.customPasswordFiles | object | `{}` |  |
+| auth.database | string | `"my_database"` |  |
+| auth.existingSecret | string | `""` |  |
+| auth.password | string | `""` |  |
+| auth.replicationPassword | string | `""` |  |
+| auth.replicationUser | string | `"replicator"` |  |
+| auth.rootPassword | string | `""` |  |
+| auth.usePasswordFiles | bool | `false` |  |
+| auth.username | string | `""` |  |
+| clusterDomain | string | `"cluster.local"` |  |
+| commonAnnotations | object | `{}` |  |
+| commonLabels | object | `{}` |  |
+| diagnosticMode.args[0] | string | `"infinity"` |  |
+| diagnosticMode.command[0] | string | `"sleep"` |  |
+| diagnosticMode.enabled | bool | `false` |  |
+| extraDeploy | list | `[]` |  |
+| fullnameOverride | string | `""` |  |
+| global.compatibility.openshift.adaptSecurityContext | string | `"auto"` |  |
+| global.imagePullSecrets | list | `[]` |  |
+| global.imageRegistry | string | `""` |  |
+| global.storageClass | string | `""` |  |
+| image.debug | bool | `false` |  |
+| image.digest | string | `""` |  |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.pullSecrets | list | `[]` |  |
+| image.registry | string | `"docker.io"` |  |
+| image.repository | string | `"bitnami/mysql"` |  |
+| image.tag | string | `"8.4.0-debian-12-r3"` |  |
+| initdbScripts | object | `{}` |  |
+| initdbScriptsConfigMap | string | `""` |  |
+| kubeVersion | string | `""` |  |
+| metrics.containerPorts.http | int | `9104` |  |
+| metrics.containerSecurityContext.allowPrivilegeEscalation | bool | `false` |  |
+| metrics.containerSecurityContext.capabilities.drop[0] | string | `"ALL"` |  |
+| metrics.containerSecurityContext.enabled | bool | `true` |  |
+| metrics.containerSecurityContext.readOnlyRootFilesystem | bool | `true` |  |
+| metrics.containerSecurityContext.runAsGroup | int | `1001` |  |
+| metrics.containerSecurityContext.runAsNonRoot | bool | `true` |  |
+| metrics.containerSecurityContext.runAsUser | int | `1001` |  |
+| metrics.containerSecurityContext.seLinuxOptions | object | `{}` |  |
+| metrics.containerSecurityContext.seccompProfile.type | string | `"RuntimeDefault"` |  |
+| metrics.enabled | bool | `false` |  |
+| metrics.extraArgs.primary | list | `[]` |  |
+| metrics.extraArgs.secondary | list | `[]` |  |
+| metrics.image.digest | string | `""` |  |
+| metrics.image.pullPolicy | string | `"IfNotPresent"` |  |
+| metrics.image.pullSecrets | list | `[]` |  |
+| metrics.image.registry | string | `"docker.io"` |  |
+| metrics.image.repository | string | `"bitnami/mysqld-exporter"` |  |
+| metrics.image.tag | string | `"0.15.1-debian-12-r16"` |  |
+| metrics.livenessProbe.enabled | bool | `true` |  |
+| metrics.livenessProbe.failureThreshold | int | `3` |  |
+| metrics.livenessProbe.initialDelaySeconds | int | `120` |  |
+| metrics.livenessProbe.periodSeconds | int | `10` |  |
+| metrics.livenessProbe.successThreshold | int | `1` |  |
+| metrics.livenessProbe.timeoutSeconds | int | `1` |  |
+| metrics.prometheusRule.additionalLabels | object | `{}` |  |
+| metrics.prometheusRule.enabled | bool | `false` |  |
+| metrics.prometheusRule.namespace | string | `""` |  |
+| metrics.prometheusRule.rules | list | `[]` |  |
+| metrics.readinessProbe.enabled | bool | `true` |  |
+| metrics.readinessProbe.failureThreshold | int | `3` |  |
+| metrics.readinessProbe.initialDelaySeconds | int | `30` |  |
+| metrics.readinessProbe.periodSeconds | int | `10` |  |
+| metrics.readinessProbe.successThreshold | int | `1` |  |
+| metrics.readinessProbe.timeoutSeconds | int | `1` |  |
+| metrics.resources | object | `{}` |  |
+| metrics.resourcesPreset | string | `"nano"` |  |
+| metrics.service.annotations."prometheus.io/port" | string | `"{{ .Values.metrics.service.port }}"` |  |
+| metrics.service.annotations."prometheus.io/scrape" | string | `"true"` |  |
+| metrics.service.clusterIP | string | `""` |  |
+| metrics.service.port | int | `9104` |  |
+| metrics.service.type | string | `"ClusterIP"` |  |
+| metrics.serviceMonitor.annotations | object | `{}` |  |
+| metrics.serviceMonitor.enabled | bool | `false` |  |
+| metrics.serviceMonitor.honorLabels | bool | `false` |  |
+| metrics.serviceMonitor.interval | string | `"30s"` |  |
+| metrics.serviceMonitor.jobLabel | string | `""` |  |
+| metrics.serviceMonitor.labels | object | `{}` |  |
+| metrics.serviceMonitor.metricRelabelings | list | `[]` |  |
+| metrics.serviceMonitor.namespace | string | `""` |  |
+| metrics.serviceMonitor.relabelings | list | `[]` |  |
+| metrics.serviceMonitor.scrapeTimeout | string | `""` |  |
+| metrics.serviceMonitor.selector | object | `{}` |  |
+| nameOverride | string | `""` |  |
+| namespaceOverride | string | `""` |  |
+| networkPolicy.allowExternal | bool | `true` |  |
+| networkPolicy.allowExternalEgress | bool | `true` |  |
+| networkPolicy.enabled | bool | `true` |  |
+| networkPolicy.extraEgress | list | `[]` |  |
+| networkPolicy.extraIngress | list | `[]` |  |
+| networkPolicy.ingressNSMatchLabels | object | `{}` |  |
+| networkPolicy.ingressNSPodMatchLabels | object | `{}` |  |
+| primary.affinity | object | `{}` |  |
+| primary.args | list | `[]` |  |
+| primary.automountServiceAccountToken | bool | `false` |  |
+| primary.command | list | `[]` |  |
+| primary.configuration | string | `"[mysqld]\nauthentication_policy='{{- .Values.auth.authenticationPolicy | default \"* ,,\" }}'\nskip-name-resolve\nexplicit_defaults_for_timestamp\nbasedir=/opt/bitnami/mysql\nplugin_dir=/opt/bitnami/mysql/lib/plugin\nport={{ .Values.primary.containerPorts.mysql }}\nmysqlx={{ ternary 1 0 .Values.primary.enableMySQLX }}\nmysqlx_port={{ .Values.primary.containerPorts.mysqlx }}\nsocket=/opt/bitnami/mysql/tmp/mysql.sock\ndatadir=/bitnami/mysql/data\ntmpdir=/opt/bitnami/mysql/tmp\nmax_allowed_packet=16M\nbind-address=*\npid-file=/opt/bitnami/mysql/tmp/mysqld.pid\nlog-error=/opt/bitnami/mysql/logs/mysqld.log\ncharacter-set-server=UTF8\nslow_query_log=0\nlong_query_time=10.0\n\n[client]\nport={{ .Values.primary.containerPorts.mysql }}\nsocket=/opt/bitnami/mysql/tmp/mysql.sock\ndefault-character-set=UTF8\nplugin_dir=/opt/bitnami/mysql/lib/plugin\n\n[manager]\nport={{ .Values.primary.containerPorts.mysql }}\nsocket=/opt/bitnami/mysql/tmp/mysql.sock\npid-file=/opt/bitnami/mysql/tmp/mysqld.pid"` |  |
+| primary.containerPorts.mysql | int | `3306` |  |
+| primary.containerPorts.mysqlx | int | `33060` |  |
+| primary.containerSecurityContext.allowPrivilegeEscalation | bool | `false` |  |
+| primary.containerSecurityContext.capabilities.drop[0] | string | `"ALL"` |  |
+| primary.containerSecurityContext.enabled | bool | `true` |  |
+| primary.containerSecurityContext.readOnlyRootFilesystem | bool | `true` |  |
+| primary.containerSecurityContext.runAsGroup | int | `1001` |  |
+| primary.containerSecurityContext.runAsNonRoot | bool | `true` |  |
+| primary.containerSecurityContext.runAsUser | int | `1001` |  |
+| primary.containerSecurityContext.seLinuxOptions | object | `{}` |  |
+| primary.containerSecurityContext.seccompProfile.type | string | `"RuntimeDefault"` |  |
+| primary.customLivenessProbe | object | `{}` |  |
+| primary.customReadinessProbe | object | `{}` |  |
+| primary.customStartupProbe | object | `{}` |  |
+| primary.enableMySQLX | bool | `false` |  |
+| primary.existingConfigmap | string | `""` |  |
+| primary.extraEnvVars | list | `[]` |  |
+| primary.extraEnvVarsCM | string | `""` |  |
+| primary.extraEnvVarsSecret | string | `""` |  |
+| primary.extraFlags | string | `""` |  |
+| primary.extraPodSpec | object | `{}` |  |
+| primary.extraPorts | list | `[]` |  |
+| primary.extraVolumeMounts | list | `[]` |  |
+| primary.extraVolumes | list | `[]` |  |
+| primary.hostAliases | list | `[]` |  |
+| primary.initContainers | list | `[]` |  |
+| primary.lifecycleHooks | object | `{}` |  |
+| primary.livenessProbe.enabled | bool | `true` |  |
+| primary.livenessProbe.failureThreshold | int | `3` |  |
+| primary.livenessProbe.initialDelaySeconds | int | `5` |  |
+| primary.livenessProbe.periodSeconds | int | `10` |  |
+| primary.livenessProbe.successThreshold | int | `1` |  |
+| primary.livenessProbe.timeoutSeconds | int | `1` |  |
+| primary.name | string | `"primary"` |  |
+| primary.nodeAffinityPreset.key | string | `""` |  |
+| primary.nodeAffinityPreset.type | string | `""` |  |
+| primary.nodeAffinityPreset.values | list | `[]` |  |
+| primary.nodeSelector | object | `{}` |  |
+| primary.pdb.create | bool | `true` |  |
+| primary.pdb.maxUnavailable | string | `""` |  |
+| primary.pdb.minAvailable | string | `""` |  |
+| primary.persistence.accessModes[0] | string | `"ReadWriteOnce"` |  |
+| primary.persistence.annotations | object | `{}` |  |
+| primary.persistence.enabled | bool | `true` |  |
+| primary.persistence.existingClaim | string | `""` |  |
+| primary.persistence.selector | object | `{}` |  |
+| primary.persistence.size | string | `"8Gi"` |  |
+| primary.persistence.storageClass | string | `""` |  |
+| primary.persistence.subPath | string | `""` |  |
+| primary.persistentVolumeClaimRetentionPolicy.enabled | bool | `false` |  |
+| primary.persistentVolumeClaimRetentionPolicy.whenDeleted | string | `"Retain"` |  |
+| primary.persistentVolumeClaimRetentionPolicy.whenScaled | string | `"Retain"` |  |
+| primary.podAffinityPreset | string | `""` |  |
+| primary.podAnnotations | object | `{}` |  |
+| primary.podAntiAffinityPreset | string | `"soft"` |  |
+| primary.podLabels | object | `{}` |  |
+| primary.podManagementPolicy | string | `""` |  |
+| primary.podSecurityContext.enabled | bool | `true` |  |
+| primary.podSecurityContext.fsGroup | int | `1001` |  |
+| primary.podSecurityContext.fsGroupChangePolicy | string | `"Always"` |  |
+| primary.podSecurityContext.supplementalGroups | list | `[]` |  |
+| primary.podSecurityContext.sysctls | list | `[]` |  |
+| primary.priorityClassName | string | `""` |  |
+| primary.readinessProbe.enabled | bool | `true` |  |
+| primary.readinessProbe.failureThreshold | int | `3` |  |
+| primary.readinessProbe.initialDelaySeconds | int | `5` |  |
+| primary.readinessProbe.periodSeconds | int | `10` |  |
+| primary.readinessProbe.successThreshold | int | `1` |  |
+| primary.readinessProbe.timeoutSeconds | int | `1` |  |
+| primary.resources | object | `{}` |  |
+| primary.resourcesPreset | string | `"small"` |  |
+| primary.runtimeClassName | string | `""` |  |
+| primary.schedulerName | string | `""` |  |
+| primary.service.annotations | object | `{}` |  |
+| primary.service.clusterIP | string | `""` |  |
+| primary.service.externalTrafficPolicy | string | `"Cluster"` |  |
+| primary.service.extraPorts | list | `[]` |  |
+| primary.service.headless.annotations | object | `{}` |  |
+| primary.service.loadBalancerIP | string | `""` |  |
+| primary.service.loadBalancerSourceRanges | list | `[]` |  |
+| primary.service.nodePorts.mysql | string | `""` |  |
+| primary.service.nodePorts.mysqlx | string | `""` |  |
+| primary.service.ports.mysql | int | `3306` |  |
+| primary.service.ports.mysqlx | int | `33060` |  |
+| primary.service.sessionAffinity | string | `"None"` |  |
+| primary.service.sessionAffinityConfig | object | `{}` |  |
+| primary.service.type | string | `"ClusterIP"` |  |
+| primary.sidecars | list | `[]` |  |
+| primary.startupProbe.enabled | bool | `true` |  |
+| primary.startupProbe.failureThreshold | int | `10` |  |
+| primary.startupProbe.initialDelaySeconds | int | `15` |  |
+| primary.startupProbe.periodSeconds | int | `10` |  |
+| primary.startupProbe.successThreshold | int | `1` |  |
+| primary.startupProbe.timeoutSeconds | int | `1` |  |
+| primary.terminationGracePeriodSeconds | string | `""` |  |
+| primary.tolerations | list | `[]` |  |
+| primary.topologySpreadConstraints | list | `[]` |  |
+| primary.updateStrategy.type | string | `"RollingUpdate"` |  |
+| rbac.create | bool | `false` |  |
+| rbac.rules | list | `[]` |  |
+| secondary.affinity | object | `{}` |  |
+| secondary.args | list | `[]` |  |
+| secondary.automountServiceAccountToken | bool | `false` |  |
+| secondary.command | list | `[]` |  |
+| secondary.configuration | string | `"[mysqld]\nauthentication_policy='{{- .Values.auth.authenticationPolicy | default \"* ,,\" }}'\nskip-name-resolve\nexplicit_defaults_for_timestamp\nbasedir=/opt/bitnami/mysql\nplugin_dir=/opt/bitnami/mysql/lib/plugin\nport={{ .Values.secondary.containerPorts.mysql }}\nmysqlx={{ ternary 1 0 .Values.secondary.enableMySQLX }}\nmysqlx_port={{ .Values.secondary.containerPorts.mysqlx }}\nsocket=/opt/bitnami/mysql/tmp/mysql.sock\ndatadir=/bitnami/mysql/data\ntmpdir=/opt/bitnami/mysql/tmp\nmax_allowed_packet=16M\nbind-address=*\npid-file=/opt/bitnami/mysql/tmp/mysqld.pid\nlog-error=/opt/bitnami/mysql/logs/mysqld.log\ncharacter-set-server=UTF8\nslow_query_log=0\nlong_query_time=10.0\n\n[client]\nport={{ .Values.secondary.containerPorts.mysql }}\nsocket=/opt/bitnami/mysql/tmp/mysql.sock\ndefault-character-set=UTF8\nplugin_dir=/opt/bitnami/mysql/lib/plugin\n\n[manager]\nport={{ .Values.secondary.containerPorts.mysql }}\nsocket=/opt/bitnami/mysql/tmp/mysql.sock\npid-file=/opt/bitnami/mysql/tmp/mysqld.pid"` |  |
+| secondary.containerPorts.mysql | int | `3306` |  |
+| secondary.containerPorts.mysqlx | int | `33060` |  |
+| secondary.containerSecurityContext.allowPrivilegeEscalation | bool | `false` |  |
+| secondary.containerSecurityContext.capabilities.drop[0] | string | `"ALL"` |  |
+| secondary.containerSecurityContext.enabled | bool | `true` |  |
+| secondary.containerSecurityContext.readOnlyRootFilesystem | bool | `true` |  |
+| secondary.containerSecurityContext.runAsGroup | int | `1001` |  |
+| secondary.containerSecurityContext.runAsNonRoot | bool | `true` |  |
+| secondary.containerSecurityContext.runAsUser | int | `1001` |  |
+| secondary.containerSecurityContext.seLinuxOptions | object | `{}` |  |
+| secondary.containerSecurityContext.seccompProfile.type | string | `"RuntimeDefault"` |  |
+| secondary.customLivenessProbe | object | `{}` |  |
+| secondary.customReadinessProbe | object | `{}` |  |
+| secondary.customStartupProbe | object | `{}` |  |
+| secondary.enableMySQLX | bool | `false` |  |
+| secondary.existingConfigmap | string | `""` |  |
+| secondary.extraEnvVars | list | `[]` |  |
+| secondary.extraEnvVarsCM | string | `""` |  |
+| secondary.extraEnvVarsSecret | string | `""` |  |
+| secondary.extraFlags | string | `""` |  |
+| secondary.extraPodSpec | object | `{}` |  |
+| secondary.extraPorts | list | `[]` |  |
+| secondary.extraVolumeMounts | list | `[]` |  |
+| secondary.extraVolumes | list | `[]` |  |
+| secondary.hostAliases | list | `[]` |  |
+| secondary.initContainers | list | `[]` |  |
+| secondary.lifecycleHooks | object | `{}` |  |
+| secondary.livenessProbe.enabled | bool | `true` |  |
+| secondary.livenessProbe.failureThreshold | int | `3` |  |
+| secondary.livenessProbe.initialDelaySeconds | int | `5` |  |
+| secondary.livenessProbe.periodSeconds | int | `10` |  |
+| secondary.livenessProbe.successThreshold | int | `1` |  |
+| secondary.livenessProbe.timeoutSeconds | int | `1` |  |
+| secondary.name | string | `"secondary"` |  |
+| secondary.nodeAffinityPreset.key | string | `""` |  |
+| secondary.nodeAffinityPreset.type | string | `""` |  |
+| secondary.nodeAffinityPreset.values | list | `[]` |  |
+| secondary.nodeSelector | object | `{}` |  |
+| secondary.pdb.create | bool | `true` |  |
+| secondary.pdb.maxUnavailable | string | `""` |  |
+| secondary.pdb.minAvailable | string | `""` |  |
+| secondary.persistence.accessModes[0] | string | `"ReadWriteOnce"` |  |
+| secondary.persistence.annotations | object | `{}` |  |
+| secondary.persistence.enabled | bool | `true` |  |
+| secondary.persistence.existingClaim | string | `""` |  |
+| secondary.persistence.selector | object | `{}` |  |
+| secondary.persistence.size | string | `"8Gi"` |  |
+| secondary.persistence.storageClass | string | `""` |  |
+| secondary.persistence.subPath | string | `""` |  |
+| secondary.persistentVolumeClaimRetentionPolicy.enabled | bool | `false` |  |
+| secondary.persistentVolumeClaimRetentionPolicy.whenDeleted | string | `"Retain"` |  |
+| secondary.persistentVolumeClaimRetentionPolicy.whenScaled | string | `"Retain"` |  |
+| secondary.podAffinityPreset | string | `""` |  |
+| secondary.podAnnotations | object | `{}` |  |
+| secondary.podAntiAffinityPreset | string | `"soft"` |  |
+| secondary.podLabels | object | `{}` |  |
+| secondary.podManagementPolicy | string | `""` |  |
+| secondary.podSecurityContext.enabled | bool | `true` |  |
+| secondary.podSecurityContext.fsGroup | int | `1001` |  |
+| secondary.podSecurityContext.fsGroupChangePolicy | string | `"Always"` |  |
+| secondary.podSecurityContext.supplementalGroups | list | `[]` |  |
+| secondary.podSecurityContext.sysctls | list | `[]` |  |
+| secondary.priorityClassName | string | `""` |  |
+| secondary.readinessProbe.enabled | bool | `true` |  |
+| secondary.readinessProbe.failureThreshold | int | `3` |  |
+| secondary.readinessProbe.initialDelaySeconds | int | `5` |  |
+| secondary.readinessProbe.periodSeconds | int | `10` |  |
+| secondary.readinessProbe.successThreshold | int | `1` |  |
+| secondary.readinessProbe.timeoutSeconds | int | `1` |  |
+| secondary.replicaCount | int | `1` |  |
+| secondary.resources | object | `{}` |  |
+| secondary.resourcesPreset | string | `"small"` |  |
+| secondary.runtimeClassName | string | `""` |  |
+| secondary.schedulerName | string | `""` |  |
+| secondary.service.annotations | object | `{}` |  |
+| secondary.service.clusterIP | string | `""` |  |
+| secondary.service.externalTrafficPolicy | string | `"Cluster"` |  |
+| secondary.service.extraPorts | list | `[]` |  |
+| secondary.service.headless.annotations | object | `{}` |  |
+| secondary.service.loadBalancerIP | string | `""` |  |
+| secondary.service.loadBalancerSourceRanges | list | `[]` |  |
+| secondary.service.nodePorts.mysql | string | `""` |  |
+| secondary.service.nodePorts.mysqlx | string | `""` |  |
+| secondary.service.ports.mysql | int | `3306` |  |
+| secondary.service.ports.mysqlx | int | `33060` |  |
+| secondary.service.sessionAffinity | string | `"None"` |  |
+| secondary.service.sessionAffinityConfig | object | `{}` |  |
+| secondary.service.type | string | `"ClusterIP"` |  |
+| secondary.sidecars | list | `[]` |  |
+| secondary.startupProbe.enabled | bool | `true` |  |
+| secondary.startupProbe.failureThreshold | int | `15` |  |
+| secondary.startupProbe.initialDelaySeconds | int | `15` |  |
+| secondary.startupProbe.periodSeconds | int | `10` |  |
+| secondary.startupProbe.successThreshold | int | `1` |  |
+| secondary.startupProbe.timeoutSeconds | int | `1` |  |
+| secondary.terminationGracePeriodSeconds | string | `""` |  |
+| secondary.tolerations | list | `[]` |  |
+| secondary.topologySpreadConstraints | list | `[]` |  |
+| secondary.updateStrategy.type | string | `"RollingUpdate"` |  |
+| serviceAccount.annotations | object | `{}` |  |
+| serviceAccount.automountServiceAccountToken | bool | `false` |  |
+| serviceAccount.create | bool | `true` |  |
+| serviceAccount.name | string | `""` |  |
+| serviceBindings.enabled | bool | `false` |  |
+| startdbScripts | object | `{}` |  |
+| startdbScriptsConfigMap | string | `""` |  |
+| volumePermissions.enabled | bool | `false` |  |
+| volumePermissions.image.digest | string | `""` |  |
+| volumePermissions.image.pullPolicy | string | `"IfNotPresent"` |  |
+| volumePermissions.image.pullSecrets | list | `[]` |  |
+| volumePermissions.image.registry | string | `"docker.io"` |  |
+| volumePermissions.image.repository | string | `"bitnami/os-shell"` |  |
+| volumePermissions.image.tag | string | `"12-debian-12-r21"` |  |
+| volumePermissions.resources | object | `{}` |  |
+| volumePermissions.resourcesPreset | string | `"nano"` |  |
+
+----------------------------------------------
+Autogenerated from chart metadata using [helm-docs v1.13.1](https://github.com/norwoodj/helm-docs/releases/v1.13.1)

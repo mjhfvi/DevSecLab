@@ -1,0 +1,49 @@
+# source: https://artifacthub.io/packages/helm/bitnami/postgresql
+helm repo add bitnami https://charts.bitnami.com/bitnami
+
+kubectl -f postgres-volume-persistent-nfs.yml apply
+kubectl -f postgres-volume-persistent-claim.yml apply
+kubectl -f postgres-secrets.yml apply
+
+helm install postgresql-db oci://registry-1.docker.io/bitnamicharts/postgresql \
+--set global.postgresql.auth.existingSecret=postgresql-db-secret-basic-auth \
+--set global.postgresql.auth.secretKeys.adminPasswordKey=password \
+--set primary.persistence.enabled=true \
+--set primary.persistence.size=2Gi \
+--set primary.persistence.existingClaim=postgres-persistent-volume-claim-nfs \
+--set primary.service.type=NodePort \
+--set primary.service.ports.postgresql=5432 \
+--set primary.service.nodePorts.postgresql=30001 \
+--set primary.livenessProbe.enabled=true \
+--set primary.containerSecurityContext.runAsNonRoot=true
+
+# use this without a secret,
+# remove global.postgresql.auth.existingSecret & global.postgresql.postgresqlPasswordKey
+# export POSTGRES_PASSWORD=dbsecretpassword
+--set auth.postgresPassword=$POSTGRES_PASSWORD \
+
+get postgresql password information: export POSTGRES_PASSWORD=$(kubectl get secret --namespace default postgresql-db -o jsonpath="{.data.postgres-password}" | base64 -d)
+show password var: echo $POSTGRES_PASSWORD
+
+postgresql connection name in the cluster: postgresql-db.default.svc.cluster.local - Read/Write connection
+get service information: kubectl get all,svc,secrets,pods,pvc,pv
+open postgresql port 5432: kubectl port-forward --namespace default svc/postgresql-db 5432:5432
+connect to postgresql: psql --host localhost -U postgres -d postgres -p 5432
+
+
+PostgreSQL login
+account: postgres
+password: dbsecretpassword OR mydbpassword
+
+## Troubleshooting ##
+helm uninstall postgresql-db
+kubectl -f postgres-volume-persistent-nfs.yml delete
+
+psql: error: connection to server at "127.0.0.1", port 5432 failed: FATAL:  password authentication failed for user "postgres"
+kubectl delete persistentvolumeclaim
+
+kubectl events
+kubectl logs postgresql-db-0
+
+
+sudo mount -t nfs 172.22.54.171:/home/tzahi/nfsshare/storage/postgres-clalit /mnt/test_share

@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jenkins-storage-persistent-volume-nfs
+  labels:
+    storageclass.storage.k8s.io: jenkins-storage-persistent-volume-nfs
+spec:
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  accessModes: [ReadWriteMany]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: storage-nfs
+  nfs:
+    path: /home/tzahi/nfsshare/storage/jenkins_home
+    server: 172.22.54.171
+    readOnly: false

@@ -1,0 +1,46 @@
+---
+#  Source:
+#   What is a helmfile? Read here...
+#   https://github.com/helmfile/helmfile
+#   Examples: https://github.com/helmfile/helmfile/blob/main/examples/charts/argocd-helmfile-deployment/helmfile.yaml
+
+# Before deployment, export the required env vars
+# export HELM_SECRETS_DRIVER=vault
+
+# Commands to deploy:
+# helmfile deps  # < download dependencies
+# helmfile template  # < template stuff. You might have to be signed into vault
+# helmfile sync  # < deploy everything
+# helmfile sync -f filename.yaml  # < deploy everything from file
+# helmfile apply  # < deploy diff only
+# helmfile destroy  # < deploy diff only
+filepath: helmfile.yaml
+helmBinary: helm
+# kustomizeBinary: kustomize
+helmDefaults:
+  # verify: false
+  # enableDNS: false
+  # waitForJobs: false
+  timeout: 60
+  # skipDeps: false
+  # reuseValues: false
+  # deleteWait: false
+  # deleteTimeout: 0
+repositories:
+  - name: ingress-nginx
+    url: https://kubernetes.github.io/ingress-nginx
+releases:
+  - name: ingress-nginx
+    installed: true
+    namespace: default
+    createNamespace: true
+    chart: '{{`{{ .Release.Name }}`}}/{{`{{ .Release.Name }}`}}'
+    labels:
+      app.kubernetes.io/name: name
+  #   version: 0.0.0
+  #   missingFileHandler: Warn  # set to either "Error" or "Warn". "Error" instructs helmfile to fail when unable to find a values or secrets file. When "Warn", it prints the file and continues.
+  #   verify: true
+  #   timeout: 60
+  #   cleanupOnFail: true
+    values:
+      - ./{{`{{ .Release.Name }}`}}/values-{{`{{ .Release.Name }}`}}.yaml

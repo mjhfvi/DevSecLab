@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: python
+spec:
+
+  serviceName: python
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python
+  template:
+    metadata:
+      labels:
+        app: python
+    spec:
+      securityContext:    # USE ONLY FOR TESTING (REMOTE DEVELOPMENT)
+        runAsUser: 0      # USE ONLY FOR TESTING (REMOTE DEVELOPMENT)
+        runAsGroup: 0     # USE ONLY FOR TESTING (REMOTE DEVELOPMENT)
+        fsGroup: 0        # USE ONLY FOR TESTING (REMOTE DEVELOPMENT)
+      containers:
+        - name: python
+          image: mjhfvi/project-python
+          # imagePullPolicy: IfNotPresent
+          # securityContext:
+          #   # runAsNonRoot: false
+          #   # readOnlyRootFilesystem: true
+          #   allowPrivilegeEscalation: false
+          #   capabilities:
+          #     drop: ["ALL"]
+          #   seccompProfile:
+          #     type: RuntimeDefault
+
+          resources:
+            requests:
+              memory: 32Mi
+              cpu: 50m
+            limits:
+              memory: 64Mi
+              cpu: 100m
+          ports:
+            - name: flask
+              containerPort: 5000
+          envFrom:
+            - configMapRef:
+                name: python-environment-variables
