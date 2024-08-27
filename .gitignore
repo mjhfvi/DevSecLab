@@ -1,0 +1,12 @@
+.vscode/*
+.infracost/*
+*/__pycache__/*
+terraform/aws_eks/.terraform/*
+charts/argo-cd/Chart.lock
+home-task-app-main/*
+python/package-lock.json
+python/templates/index.html.backup
+gitleaks-report.json
+terraform/aws_eks/secret.tfvars
+terraform/aws_eks/*.tfplan
+ed25519_ssh_login_key_*
