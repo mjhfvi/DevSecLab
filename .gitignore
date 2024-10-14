@@ -11,3 +11,4 @@ python/package-lock.json
 python/templates/index.html.backup
 gitleaks-report.json
 .talismanrc
+.scannerwork/*

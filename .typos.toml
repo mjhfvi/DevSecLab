@@ -16,6 +16,7 @@ mak = "mak"
 Ot = "Ot"
 fo = "fo"
 Fo = "Fo"
+ba = "ba"
 
 [default.extend-identifiers]
 #datas = "datas"

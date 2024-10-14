@@ -50,7 +50,7 @@ releases:
       #     existingClaim: jenkins-persistent-volume-claim
       - controller:
           image:
-            tag: 2.472-jdk17
+            tag: 2.477-jdk17
           csrf:
             defaultCrumbIssuer:
               # -- Enable the default CSRF Crumb issuer
