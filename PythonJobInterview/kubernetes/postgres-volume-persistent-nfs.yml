@@ -15,5 +15,5 @@ spec:
   storageClassName: postgres-storage-nfs
   nfs:
     path: /home/tzahi/nfsshare/storage/postgres-clalit
-    server: 172.22.54.171
+    server: 172.22.54.208
     readOnly: false

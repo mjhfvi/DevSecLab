@@ -1,13 +1,7 @@
 ---
 fileignoreconfig:
-- filename: k6-load-testing/json.js
-  checksum: b9b056fb5722fe102deeb6b6b9af54a1e93ecc20c4214058a41ff6d589f5c975
-- filename: k6-load-testing/script.js
-  checksum: 0dc6fba14c5d0740c5f769a0d3c3013fcf5a3d024fb5db109967c0acba5e7734
-- filename: zap-dast-scan/zap-full-scan.py
-  checksum: 5d5365037a6ed73170aa8cee5e886eff6b31b8f9a5e112017f8397604ffeb762
-- filename: zap-dast-scan/zap-baseline.py
-  checksum: b3e831845e3f337dcf8fa868d206b4114b331dae4bcf29a78e82d7b16a2b15aa
-- filename: zap-dast-scan/zap-api-scan.py
-  checksum: 376dfc82223ec4106f5a540f5cbaf4146e7febdb73d56753cd2e74abe5478538
+- filename: PythonJobInterview/kubernetes/postgresql.txt
+  checksum: 8773e809ca3b4e242aae3ab05a7a29fd184988131875e580f926c3d10274ca15
+- filename: PythonJobInterview/postgresql/postgresql-volume-persistent-nfs.yaml
+  checksum: 525313bb7d7eb3cb5fb442629bb780d9aa4bfd8668518f7d6772311c9d3a43fa
 version: ""

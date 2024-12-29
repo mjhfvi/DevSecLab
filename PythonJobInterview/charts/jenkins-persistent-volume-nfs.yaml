@@ -14,5 +14,5 @@ spec:
   storageClassName: storage-nfs
   nfs:
     path: /home/tzahi/nfsshare/storage/jenkins_home
-    server: 172.22.54.171
+    server: 172.22.54.208
     readOnly: false

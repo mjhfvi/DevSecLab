@@ -46,4 +46,4 @@ kubectl events
 kubectl logs postgresql-db-0
 
 
-sudo mount -t nfs 172.22.54.171:/home/tzahi/nfsshare/storage/postgres-clalit /mnt/test_share
+sudo mount -t nfs 172.22.54.208:/home/tzahi/nfsshare/storage/postgres-clalit /mnt/test_share
