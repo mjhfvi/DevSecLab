@@ -33,8 +33,8 @@ repos:
         verbose: true
       - id: check-xml
         verbose: true
-        # - id: check-yaml
-        #   verbose: true
+      - id: check-yaml
+        verbose: true
         args: [--allow-multiple-documents]
       - id: pretty-format-json
         verbose: true
@@ -48,8 +48,8 @@ repos:
       #   exclude: gitleaks-report.json
       - id: check-merge-conflict
         verbose: true
-      # - id: check-vcs-permalinks
-      #   verbose: true
+      - id: check-vcs-permalinks
+        verbose: true
       - id: forbid-new-submodules
         verbose: true
       - id: no-commit-to-branch
@@ -80,14 +80,14 @@ repos:
     hooks:
       - id: setup-cfg-fmt
         name: setup-cfg-fmt (apply a consistent format to setup.cfg files)
-  # - repo: https://github.com/crate-ci/typos
-  #   rev: typos-dict-v0.12.6
-  #   hooks:
-  #     - id: typos
-  #       # - id: typos-docker
-  #       name: typos (Finds and corrects spelling mistakes)
-  #       args: ["--config", ".typos.toml", "-v"]
-  #       exclude: gitleaks-report.json|charts/|helm-template-example/
+  - repo: https://github.com/crate-ci/typos
+    rev: typos-dict-v0.12.6
+    hooks:
+      - id: typos
+        # - id: typos-docker
+        name: typos (Finds and corrects spelling mistakes)
+        args: ["--config", ".typos.toml", "-v"]
+        exclude: gitleaks-report.json|charts/|helm-template-example/
   - repo: https://github.com/lyz-code/yamlfix/
     rev: 1.17.0
     hooks:
@@ -124,21 +124,21 @@ repos:
         args: [scan, --apply-fixes] # --full-report
         language: system
         files: requirements
-  # - repo: https://github.com/PyCQA/flake8
-  #   rev: 7.1.2
-  #   hooks:
-  #     - id: flake8
-  #       name: flake8 (Flake8 is a wrapper around these tools PyFlakes, pycodestyle, McCabe script)
-  # - repo: https://github.com/PyCQA/bandit
-  #   rev: 1.8.3
-  #   hooks:
-  #     - id: bandit
-  #       name: bandit (security linter from PyCQA)
-  # - repo: https://github.com/landscapeio/prospector
-  #   rev: v1.15.1
-  #   hooks:
-  #     - id: prospector
-  #       name: prospector (Style Guide Enforcement)
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.1.2
+    hooks:
+      - id: flake8
+        name: flake8 (Flake8 is a wrapper around these tools PyFlakes, pycodestyle, McCabe script)
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.8.3
+    hooks:
+      - id: bandit
+        name: bandit (security linter from PyCQA)
+  - repo: https://github.com/landscapeio/prospector
+    rev: v1.15.1
+    hooks:
+      - id: prospector
+        name: prospector (Style Guide Enforcement)
   - repo: https://github.com/asottile/reorder-python-imports
     rev: v3.14.0
     hooks:
@@ -195,13 +195,13 @@ repos:
       #   name: Detect hardcoded secrets
       #   description: Detect hardcoded system secrets using Gitleaks
       #   args: [--no-banner, --config=.gitleaks.toml]
-  # - repo: https://github.com/thoughtworks/talisman
-  #   rev: v1.32.0
-  #   hooks:
-  #     - id: talisman-commit
-  #       name: talisman (scans git to ensure that potential secrets or sensitive information)
-  #       entry: cmd --githook pre-commit
-  #       exclude: charts/.*|helm-template-example/.*
+  - repo: https://github.com/thoughtworks/talisman
+    rev: v1.32.0
+    hooks:
+      - id: talisman-commit
+        name: talisman (scans git to ensure that potential secrets or sensitive information)
+        entry: cmd --githook pre-commit
+        exclude: charts/.*|helm-template-example/.*
 
   # - repo: https://github.com/gitguardian/ggshield  # need token for use
   #   rev: v1.28.0
@@ -256,63 +256,63 @@ repos:
         # https://prettier.io/docs/en/options.html#parser
         files: .json5$
 
-  # - repo: https://github.com/terraform-docs/terraform-docs
-  #   rev: v0.19.0
-  #   hooks:
-  #     - id: terraform-docs-go
-  #       args: [markdown, table, --output-file, README.md, ./]
-  # - repo: https://github.com/antonbabenko/pre-commit-terraform
-  #   rev: v1.97.4
-  #   hooks:
-  #     - id: terraform_fmt
-  #       verbose: true
-  #       # args: [--hook-config=--parallelism-ci-cpu-cores=1]
-  #     - id: terraform_tflint
-  #       verbose: true
-  #     #   args: [--minimum-failure-severity=[notice,warning]]
-  #     # args: [--hook-config=--parallelism-ci-cpu-cores=1]
-  #     - id: terraform_validate
-  #       verbose: true
-  #     - id: terraform_trivy
-  #       verbose: true
-  #     # files: ^prd-infra/
-  #     - id: terraform_providers_lock
-  #       verbose: true
-  #       # args: [--hook-config=--parallelism-limit=CPU*4]
-  #     - id: terraform_checkov
-  #       verbose: true
-  #       # args: ["--config-file", ".checkov.yaml"]
-  #       # args: [--args=--quiet, --args=--skip-check CKV2_AWS_8]
-  #     # - id: terraform_tfsec
-  #     #   verbose: true
-  #     # - id: infracost_breakdown
-  #     #   verbose: true
-  #     #   args: [--args=--path=./env/dev]
-  #     # - id: infracost_breakdown
-  #     #   verbose: true
-  #     #   args:
-  #     #     - --args=--path=./env/dev
-  #     #     - --args=--terraform-var-file="terraform.tfvars"
-  #     #     - --args=--terraform-var-file="../terraform.tfvars"
-  #     - id: terraform_docs
-  #       verbose: true
-  #       args: [--args=--config=.terraform-docs.yml]
+  - repo: https://github.com/terraform-docs/terraform-docs
+    rev: v0.19.0
+    hooks:
+      - id: terraform-docs-go
+        args: [markdown, table, --output-file, README.md, ./]
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.97.4
+    hooks:
+      - id: terraform_fmt
+        verbose: true
+        # args: [--hook-config=--parallelism-ci-cpu-cores=1]
+      - id: terraform_tflint
+        verbose: true
+      #   args: [--minimum-failure-severity=[notice,warning]]
+      # args: [--hook-config=--parallelism-ci-cpu-cores=1]
+      - id: terraform_validate
+        verbose: true
+      - id: terraform_trivy
+        verbose: true
+      # files: ^prd-infra/
+      - id: terraform_providers_lock
+        verbose: true
+        # args: [--hook-config=--parallelism-limit=CPU*4]
+      - id: terraform_checkov
+        verbose: true
+        # args: ["--config-file", ".checkov.yaml"]
+        # args: [--args=--quiet, --args=--skip-check CKV2_AWS_8]
+      # - id: terraform_tfsec
+      #   verbose: true
+      # - id: infracost_breakdown
+      #   verbose: true
+      #   args: [--args=--path=./env/dev]
+      # - id: infracost_breakdown
+      #   verbose: true
+      #   args:
+      #     - --args=--path=./env/dev
+      #     - --args=--terraform-var-file="terraform.tfvars"
+      #     - --args=--terraform-var-file="../terraform.tfvars"
+      - id: terraform_docs
+        verbose: true
+        args: [--args=--config=.terraform-docs.yml]
 
-  # - repo: https://github.com/zwennesm/pre-commit-k8s
-  #   rev: master
-  #   hooks:
-  #     - id: pre-commit-k8s
-  #       entry: pre-commit-k8s
-  #       exclude: ArgoCD/.*|Helm/.*
+  - repo: https://github.com/zwennesm/pre-commit-k8s
+    rev: master
+    hooks:
+      - id: pre-commit-k8s
+        entry: pre-commit-k8s
+        exclude: ArgoCD/.*|Helm/.*
 
-  # - repo: https://github.com/stackrox/kube-linter
-  #   rev: v0.7.2 # kube-linter version
-  #   hooks:
-  #     - id: kube-linter
-  #       name: kube-linter (static analysis tool for Kubernetes YAML files)
-  #       args: [-v]
-  #       files: .yaml$
-  #       exclude: ArgoCD/.*|Helm/.*
+  - repo: https://github.com/stackrox/kube-linter
+    rev: v0.7.2 # kube-linter version
+    hooks:
+      - id: kube-linter
+        name: kube-linter (static analysis tool for Kubernetes YAML files)
+        args: [-v]
+        files: .yaml$
+        exclude: ArgoCD/.*|Helm/.*
 
   # - repo: https://github.com/dmitri-lerko/pre-commit-docker-kustomize
   #   rev: f3a8533
