@@ -1,7 +1,21 @@
 ---
 fileignoreconfig:
-- filename: PythonJobInterview/kubernetes/postgresql.txt
-  checksum: 8773e809ca3b4e242aae3ab05a7a29fd184988131875e580f926c3d10274ca15
-- filename: PythonJobInterview/postgresql/postgresql-volume-persistent-nfs.yaml
-  checksum: 525313bb7d7eb3cb5fb442629bb780d9aa4bfd8668518f7d6772311c9d3a43fa
+  - filename: security_boundary/worker.hcl
+    checksum: 2d41a794d51e01703c612a735472bec3491fbe26f748c355d51fcb6f2e2573ae
+  - filename: security_boundary/token.hcl
+    checksum: 5e09d4d36880e37c138cf2cf9d9a1d7a0c2fe1b5e8368c96870802090d465f02
+  - filename: security_boundary/README.md
+    checksum: f8d00e6fe1d352065f5ab85f8e2be78eaef14490662798267b82a826221c8b1f
+  - filename: security_boundary/server.hcl
+    checksum: 19787d502240a74bcdd7fcdeeccaebb63be817d8cabe9c3e22561867658da705
+  - filename: security_boundary/recovery.hcl
+    checksum: f9b020b1f008e74bde035817f0f635cbafb415d56d9ec3daf99d25be6ed157af
+  - filename: README.md
+    checksum: eb06ffb03de61b874dec389675f2f864ec197eb98d06810815e859d1bc45acb2
+  - filename: .pre-commit-config.yaml
+    checksum: 83f94f4635884464e24cf63619069c90e8d1173cb99d35b9cabade64f54db246
+  - filename: iac_db_project/traefik/traefik-role.yml
+    checksum: a9a4deef38854795cd6accabbb46ebf0af6d0b660e845612a4b4cff7814cde6d
+  - filename: iac_db_project/terraform/aws_eks/secret.tfvars
+    checksum: e9d60291a4fcd4ba00e967e3c381dcb40b8bc046efe6fd88785677a1a4010b26
 version: ""

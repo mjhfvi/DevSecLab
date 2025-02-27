@@ -1,0 +1,30 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: catapp
+  labels:
+    app: catapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catapp
+  template:
+    metadata:
+      labels:
+        app: catapp
+    spec:
+      containers:
+        - name: catapp
+          image: mikesir87/cats:3.0
+          ports:
+            - name: web
+              containerPort: 5000
+          resources:
+            limits:
+              cpu: '1'
+              memory: 128Mi
+            requests:
+              cpu: '0.5'
+              memory: 64Mi

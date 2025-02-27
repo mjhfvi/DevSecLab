@@ -1,0 +1,28 @@
+{
+  "[python]": {
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.defaultColorDecorators": "never"
+  },
+  "_comment": "Source: https://code.visualstudio.com/docs/getstarted/settings",
+  "_comment02": "Configure settings to be overridden for the python language.",
+  "_comment03": "The terminal profile to use for automation-related terminal usage like tasks and debug.",
+  "cSpell.words": [],
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": false,
+  "extensions.autoRestart": false,
+  "files.exclude": {
+    "**/.DS_Store": true,
+    ".build": true,
+    ".git": true,
+    ".profile-oss": true,
+    ".vscode-test": true,
+    "build/**/*.js": {
+      "when": "$(basename).ts"
+    },
+    "build/**/*.js.map": true,
+    "cli/target": true
+  },
+  "files.trimTrailingWhitespace": true,
+  "git.branchProtection": [],
+  "terminal.integrated.automationProfile.windows": true
+}
